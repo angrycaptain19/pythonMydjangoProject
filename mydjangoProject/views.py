@@ -23,9 +23,6 @@ def password(request):
 
     length = int(request.GET.get('length', 12))
 
-    thepassword = ''
-
-    for x in range(length):
-        thepassword += random.choice(characters)
+    thepassword = ''.join(random.choice(characters) for _ in range(length))
 
     return render(request, 'password.html', {'password': thepassword})
